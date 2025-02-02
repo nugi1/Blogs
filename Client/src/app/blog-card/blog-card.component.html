@@ -1,0 +1,11 @@
+<!-- blog-card.component.html -->
+<div class="blog-card">
+  <a [routerLink]="['/blog', blog.id]" class="blog-link">
+    <h2 class="blog-title">{{ blog.title }}</h2>
+  <p class="blog-content">{{ blog.content | slice:0:100 }}... </p>
+  <div class="blog-info">
+    <span class="blog-date">{{ blog.publishedAt | date: 'longDate' }}</span>
+    <span class="blog-author">By: {{ blog.author }}</span>
+</div>
+  </a>
+</div>

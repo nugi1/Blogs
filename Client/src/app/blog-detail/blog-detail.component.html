@@ -1,0 +1,12 @@
+<div *ngIf="blog$ | async as blog; else loading">
+  <div class="blog-detail">
+    <h2>{{ blog.title }}</h2>
+    <p><strong>Author:</strong> {{ blog.author }}</p>
+    <p><strong>Published on:</strong> {{ blog.publishedAt | date }}</p>
+    <p>{{ blog.content }}</p>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>

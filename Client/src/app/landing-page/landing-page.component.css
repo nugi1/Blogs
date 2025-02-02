@@ -1,0 +1,61 @@
+.photo-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  text-align: center;
+  margin-top: 80px; /* Ensure space below navbar */
+}
+
+/* Adjusting spacing further for smaller screens */
+@media (max-width: 768px) {
+  .photo-section {
+    margin-top: 250px; /* Increased margin on small screens */
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.center-photo {
+  width: 300px;
+  height: 300px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+
+.note {
+  padding: 20px 25px; /* Increased padding for a bigger note */
+  border-radius: 12px;
+  box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+  font-style: italic;
+  max-width: 250px; /* Increased width */
+  min-height: 80px; /* Ensures notes are taller */
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #87CEFA, #B0E0E6);
+
+}
+
+.note-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* Increased space between notes */
+}
+
+@media (max-width: 768px) {
+  .note-container {
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  .note {
+    font-size: 16px;
+    max-width: 180px;
+    min-height: 70px;
+  }
+}

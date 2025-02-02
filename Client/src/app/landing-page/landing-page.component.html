@@ -1,0 +1,20 @@
+<div class="photo-section">
+  <div class="note-container">
+    <div class="note">"Moving as fast as light, being in present"</div>
+    <div class="note">"I am you, unconditional love basics"</div>
+    <div class="note">"Searching for the tree of life, Milele!"</div>
+  </div>
+
+  <img src="/ReneMagritte.jpg" fill alt="Photo 1" class="center-photo" />
+
+  <div class="note-container">
+    <div class="note">"There is no purpose in life, life is purpose itself"</div>
+    <div class="note">"Stay positive, work hard, be creative, observe the truth"</div>
+    <div class="note">"Great things take time"</div>
+  </div>
+</div>
+
+<!-- landing-page.component.html -->
+<div class="blog-list"><app-blog-card *ngFor="let blog of blogs$ | async" [blog]="blog"></app-blog-card>
+</div>
+
