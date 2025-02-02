@@ -1,9 +1,34 @@
-<div *ngIf="blog$ | async as blog; else loading">
-  <div class="blog-detail">
-    <h2>{{ blog.title }}</h2>
-    <p><strong>Author:</strong> {{ blog.author }}</p>
-    <p><strong>Published on:</strong> {{ blog.publishedAt | date }}</p>
-    <p>{{ blog.content }}</p>
+<app-nav-bar></app-nav-bar>
+<div *ngIf="blog$ | async as blog; else loading" class="blog-review">
+  <h1 class="blog-title">{{ blog.title }}</h1>
+
+  <div class="blog-content-container">
+    <p class="blog-content">{{ blog.content }}</p>
+  </div>
+
+  <p class="blog-date">Published on: {{ blog.publishedAt | date: 'longDate' }}</p>
+
+  <!-- Comments Section -->
+  <div class="comments-section">
+    <h3>Comments</h3>
+
+    <div *ngIf="blog.comments.length > 0; else noComments">
+      <div *ngFor="let comment of blog.comments" class="comment">
+        <p class="comment-content">{{ comment.text }}</p>
+        <span class="comment-author">By: {{ comment.author }}</span>
+      </div>
+    </div>
+
+    <ng-template #noComments>
+      <p>No comments yet.</p>
+    </ng-template>
+
+    <!-- Show comment form only if user is authenticated -->
+    <div *ngIf="isAuthenticated">
+      <h4>Add a Comment</h4>
+      <textarea [(ngModel)]="newComment" placeholder="Write your comment..."></textarea>
+      <button (click)="postComment()">Post Comment</button>
+    </div>
   </div>
 </div>
 

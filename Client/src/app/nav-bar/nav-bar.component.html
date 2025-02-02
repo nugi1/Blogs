@@ -2,10 +2,16 @@
   <div class="logo">
     <h1><span class="neon">Thought</span><span>Share</span></h1>
   </div>
-  <ul class="nav-links">
+
+  <ul class="nav-links-center">
+    <li><a routerLink="/home" class="nav-link">Home</a></li>
     <li><a routerLink="/blogs" class="nav-link">Blogs</a></li>
-    <li><a routerLink="/photos" class="nav-link">Photos</a></li>
-    <li><a routerLink="/categories" class="nav-link">Categories</a></li>
-    <li><a routerLink="/about" class="nav-link">About Me</a></li>
+  </ul>
+
+  <ul class="nav-links-right">
+    <li *ngIf="!isAuthenticated"><a routerLink="/sign-in" class="nav-link">Sign In</a></li>
+    <li *ngIf="!isAuthenticated"><a routerLink="/sign-up" class="nav-link">Sign Up</a></li>
+    <li *ngIf="isAuthenticated" class="nav-link">My Profile</li>
+    <li *ngIf="isAuthenticated" (click)="signOut()" class="nav-link">Sign Out</li>
   </ul>
 </div>

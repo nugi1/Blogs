@@ -20,5 +20,10 @@ public static class DependencyInjection
         {
             options.UseNpgsql(connectionString);
         });
+        
+        services.AddDbContext<UserDbContext>(options =>
+        {
+            options.UseNpgsql(connectionString);
+        });
     }
 }

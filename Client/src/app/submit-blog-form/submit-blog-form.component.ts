@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Post} from "./models/Post";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {PostService} from "./post.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-submit-blog-form',
@@ -13,11 +14,10 @@ import {PostService} from "./post.service";
 export class SubmitBlogFormComponent {
   postForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private postService: PostService) {
+  constructor(private fb: FormBuilder, private postService: PostService, private router: Router) {
     this.postForm = this.fb.group({
       title: ['', Validators.required],
-      content: ['', Validators.required],
-      publishedAt: [new Date(), Validators.required]
+      content: ['', Validators.required]
     });
   }
 
@@ -27,6 +27,7 @@ export class SubmitBlogFormComponent {
       this.postService.createPost(newPost).subscribe(response => {
         console.log('Post created successfully', response);
       });
+      this.router.navigate(['/blogs']);
     }
   }
 }

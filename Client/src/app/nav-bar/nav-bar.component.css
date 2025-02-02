@@ -1,9 +1,8 @@
-/* Navbar Styles */
 .navbar {
   display: flex;
-  justify-content: space-between; /* Space out logo and links */
+  justify-content: space-between;
   align-items: center;
-  background-color: #808080; /* Grey background */
+  background-color: #808080;
   padding: 15px 30px;
   position: fixed;
   top: 0;
@@ -12,9 +11,9 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   background: linear-gradient(to right, #87CEFA, #B0E0E6);
+  flex-wrap: wrap;
 }
 
-/* Logo Styles */
 .logo h1 {
   font-size: 24px;
   margin: 0;
@@ -22,22 +21,32 @@
 }
 
 .neon {
-  color: #00FFFF; /* Neon blue for "Thought" */
+  color: #00FFFF;
   font-weight: bold;
   text-shadow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.7);
 }
 
 .navbar span {
-  color: white; /* "Share" is white */
+  color: white;
 }
 
-/* Navigation Links */
-.nav-links {
+.nav-links-center {
   display: flex;
   gap: 15px;
   list-style: none;
   padding: 0;
   margin: 0;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.nav-links-right {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: flex-end;
 }
 
 .nav-link {
@@ -53,18 +62,23 @@
   border-radius: 5px;
 }
 
-/* Responsive Navbar */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
     text-align: center;
   }
 
-  .nav-links {
+  .nav-links-center {
     flex-direction: column;
-    align-items: center;
+    gap: 10px;
     width: 100%;
     padding-top: 10px;
+  }
+
+  .nav-links-right {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
   }
 
   .nav-link {
@@ -73,6 +87,6 @@
   }
 
   .logo h1 {
-    font-size: 20px; /* Reduce logo size */
+    font-size: 20px;
   }
 }

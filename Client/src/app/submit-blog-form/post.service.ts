@@ -8,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class PostService {
 
-  private apiUrl = 'https://your-api-url.com/api/posts';
+  private apiUrl = 'http://localhost:5277/api/blogs';
 
   constructor(private http: HttpClient) {}
 
