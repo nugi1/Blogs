@@ -1,3 +1,4 @@
+using System.IdentityModel.Tokens.Jwt;
 using BlogsDAL.Models;
 using Microsoft.AspNetCore.Mvc;
 using Services;
@@ -7,12 +8,23 @@ namespace Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")] 
-public class BlogsController(IBlogService blogService) : ControllerBase
+public class BlogsController(IBlogService blogService, IUserService userService, ICommentService commentService) : ControllerBase
 {
     [HttpPost]
     public async Task<ActionResult> CreateBlog([FromBody] BlogDto blogDto)
     {
-        await blogService.CreateBlog(blogDto);
+        var token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+
+        if (string.IsNullOrEmpty(token))
+        {
+            return BadRequest("Token is missing.");
+        }
+
+        var handler = new JwtSecurityTokenHandler();
+        var jwtToken = handler.ReadJwtToken(token);
+        
+        var userIdClaim = jwtToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Jti);
+        await blogService.CreateBlog(blogDto, userIdClaim.Value);
         return Ok();
     }
 

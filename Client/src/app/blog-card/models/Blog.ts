@@ -3,14 +3,14 @@ export class Blog{
   title: string = '';
   content: string = '';
   publishedAt: Date = new Date();
-  author: string = '';
+  username: string = '';
   comments: { text: string; author: string }[] = [];
 
-  constructor(title: string, content: string, publishedAt: Date, author: string) {
+  constructor(title: string, content: string, publishedAt: Date, username: string) {
     this.title = title;
     this.content = content;
     this.publishedAt = publishedAt;
-    this.author = author;
+    this.username = username;
     this.comments = [];
   }
 }

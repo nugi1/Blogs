@@ -11,7 +11,8 @@ public class UnitOfWork(
     ICategoryRepository categoryRepository,
     ICommentRepository commentRepository,
     IPostRepository postRepository,
-    ITagRepository tagRepository)
+    ITagRepository tagRepository,
+    IUserJwtRepository userJwtRepository)
     : IUnitOfWork
 {
     private readonly BlogDbContext _context = context;
@@ -21,6 +22,7 @@ public class UnitOfWork(
     public ICommentRepository CommentRepository { get; set; } = commentRepository;
     public IPostRepository PostRepository { get; set; } = postRepository;
     public ITagRepository TagRepository { get; set; } = tagRepository;
+    public IUserJwtRepository UserJwtRepository { get; set; } = userJwtRepository;
 
     public async Task<int> SaveAsync()
     {

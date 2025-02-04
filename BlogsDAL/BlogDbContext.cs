@@ -1,4 +1,5 @@
 using BlogsDAL.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlogsDAL;
@@ -9,6 +10,7 @@ public class BlogDbContext(DbContextOptions<BlogDbContext> options) : DbContext(
     public DbSet<Post> Posts { get; set; } = null!;
     public DbSet<Comment> Comments { get; set; } = null!;
     public DbSet<Tag> Tags { get; set; } = null!;
+    public DbSet<UserJwt> UserJwts { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -23,6 +25,11 @@ public class BlogDbContext(DbContextOptions<BlogDbContext> options) : DbContext(
             e.Property(c => c.Description)
                 .IsRequired()
                 .HasMaxLength(500);
+        });
+
+        modelBuilder.Entity<UserJwt>(e =>
+        {
+            e.HasKey(uj => uj.Id);
         });
 
         modelBuilder.Entity<Comment>(e =>
@@ -43,7 +50,7 @@ public class BlogDbContext(DbContextOptions<BlogDbContext> options) : DbContext(
         modelBuilder.Entity<Post>(e =>
         {
             e.HasKey(c => c.Id);
-
+            
             e.Property(p => p.Title)
                 .IsRequired()
                 .HasMaxLength(200);

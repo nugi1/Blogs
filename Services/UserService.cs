@@ -12,20 +12,25 @@ public interface IUserService
 {
     Task<(SignInResult,string)> SignIn(SignInUserDto user);
     Task CreateUser(User user);
+    Task<IdentityUser> GetBy(string id);
 }
 
 public class UserService(SignInManager<IdentityUser> signInManager ,UserManager<IdentityUser> userManager, IConfiguration configuration) : IUserService
 {
+    public async Task<IdentityUser> GetBy(string id)
+    {
+        return await userManager.FindByIdAsync(id);
+    }
     public async Task<(SignInResult, string)> SignIn(SignInUserDto user)
     {
         var result = await signInManager.PasswordSignInAsync(user.Username, user.Password, false, false);
-
+        var userId = await userManager.FindByNameAsync(user.Username);
         if (!result.Succeeded)
         {
             throw new UnauthorizedAccessException("Invalid email or password.");
         }
 
-        var token = GenerateJwtToken(user.Username);
+        var token = GenerateJwtToken(user.Username, Guid.Parse(userId.Id));
         return (result, token);    
     }
 
@@ -45,13 +50,13 @@ public class UserService(SignInManager<IdentityUser> signInManager ,UserManager<
         }
     }
     
-    public string GenerateJwtToken(string username)
+    public string GenerateJwtToken(string username, Guid userId)
     {
         var claims = new[]
         {
             new Claim(ClaimTypes.Name, username),
             new Claim(JwtRegisteredClaimNames.Sub, username),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            new Claim(JwtRegisteredClaimNames.Jti, userId.ToString())
         };
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:SecretKey"]));

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Observable, tap} from 'rxjs';
 import {Blog} from "../blog-card/models/Blog";
+import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,9 @@ export class BlogService {
   constructor(private http: HttpClient) { }
 
   getBlogsByPublishDate(): Observable<Blog[]> {
-    return this.http.get<Blog[]>(`${this.apiUrl}`);
+    return this.http.get<Blog[]>(`${this.apiUrl}`).pipe(
+      tap(data => console.log('Backend response data:', data)) // Log the raw response
+    );
   }
 
   getBlogs(): Observable<Blog[]> {

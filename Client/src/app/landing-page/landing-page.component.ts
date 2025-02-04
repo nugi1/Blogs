@@ -22,10 +22,6 @@ import {RouterLink} from "@angular/router";
 })
 export class LandingPageComponent implements OnInit{
   blogs$!: Observable<Blog[]>;
-  blogs: Blog[] = [
-    new Blog('First Blog', 'This is the first blog content.', new Date(), 'John Doe'),
-    new Blog('Second Blog', 'This is another blog entry.', new Date(), 'Jane Doe'),
-  ]
   constructor(private blogService: BlogService) {
   }
 

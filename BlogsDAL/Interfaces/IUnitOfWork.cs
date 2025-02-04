@@ -10,6 +10,7 @@ public interface IUnitOfWork : IDisposable
     ICommentRepository CommentRepository { get; set; }
     IPostRepository PostRepository { get; set; }
     ITagRepository TagRepository { get; set; }
+    IUserJwtRepository UserJwtRepository { get; set; }
     
     Task<int> SaveAsync();
     

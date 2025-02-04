@@ -12,8 +12,8 @@
   <div class="comments-section">
     <h3>Comments</h3>
 
-    <div *ngIf="blog.comments.length > 0; else noComments">
-      <div *ngFor="let comment of blog.comments" class="comment">
+    <div *ngIf="comments.length > 0; else noComments">
+      <div *ngFor="let comment of comments" class="comment">
         <p class="comment-content">{{ comment.text }}</p>
         <span class="comment-author">By: {{ comment.author }}</span>
       </div>
