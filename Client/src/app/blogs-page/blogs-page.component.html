@@ -1,0 +1,15 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="blogs-page">
+  <h2>Blogs</h2>
+
+  <button *ngIf="isAuthenticated" (click)="navigateToCreateBlog()">Create Blog</button>
+
+  <div class="blog-list">
+    <app-blog-card *ngFor="let blog of blogs" [blog]="blog"></app-blog-card>
+  </div>
+
+  <ng-template #noBlogs>
+    <p>No blogs available.</p>
+  </ng-template>
+</div>

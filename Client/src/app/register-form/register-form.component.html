@@ -1,0 +1,37 @@
+<app-nav-bar></app-nav-bar>
+<div class="register-page">
+  <div class="register-container">
+    <h2>Register</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <label for="username">Username</label>
+      <input id="username" formControlName="username" type="text" placeholder="Enter username" />
+      <div *ngIf="registerForm.get('username')?.invalid && submitted">
+        <small *ngIf="registerForm.get('username')?.hasError('required')">Username is required</small>
+        <small *ngIf="registerForm.get('username')?.hasError('minlength')">At least 3 characters required</small>
+      </div>
+
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" type="email" placeholder="Enter email" />
+      <div *ngIf="registerForm.get('email')?.invalid && submitted">
+        <small *ngIf="registerForm.get('email')?.hasError('required')">Email is required</small>
+        <small *ngIf="registerForm.get('email')?.hasError('email')">Invalid email</small>
+      </div>
+
+      <label for="password">Password</label>
+      <input id="password" formControlName="password" type="password" placeholder="Enter password" />
+      <div *ngIf="registerForm.get('password')?.invalid && submitted">
+        <small *ngIf="registerForm.get('password')?.hasError('required')">Password is required</small>
+        <small *ngIf="registerForm.get('password')?.hasError('minlength')">At least 6 characters required</small>
+      </div>
+
+      <label for="confirmPassword">Confirm Password</label>
+      <input id="confirmPassword" formControlName="confirmPassword" type="password" placeholder="Confirm password" />
+      <div *ngIf="registerForm.hasError('mismatch') && submitted">
+        <small>Passwords do not match</small>
+      </div>
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
+</div>
