@@ -1,0 +1,53 @@
+<app-nav-bar></app-nav-bar>
+<div class="profile-container">
+  <div class="profile-header">
+    <!-- Avatar -->
+    <img [src]="userProfile.avatar" alt="Profile Avatar" class="profile-avatar">
+
+    <!-- User Information -->
+    <div class="user-info">
+      <h1>{{ userProfile.name }}</h1>
+      <p><strong>Age:</strong> {{ userProfile.age }}</p>
+      <p><strong>Email:</strong> {{ userProfile.email }}</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Friends List Section -->
+  <div class="friends-list">
+    <h2>Friends</h2>
+
+    <!-- Scrollable Friends Container -->
+    <div class="friends-scrollable">
+      <ul>
+        <li *ngFor="let friend of friends">
+          <div class="friend-card">
+            <!-- Friend Avatar -->
+            <img [src]="friend.avatar" alt="{{ friend.name }}" class="friend-avatar">
+            <div class="friend-info">
+              <a [routerLink]="['/profile', friend.id]" class="friend-name">{{ friend.name }}</a>
+              <p class="friend-email">{{ friend.email }}</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- My Blog Listings Section -->
+  <div class="my-blogs">
+    <h2>My Blogs</h2>
+
+    <!-- Scrollable Blogs Container -->
+    <div class="blogs-scrollable">
+      <div *ngFor="let blog of blogs" class="blog-card">
+        <h3>{{ blog.title }}</h3>
+        <p>{{ blog.content | slice:0:100 }}...</p>
+        <a [routerLink]="['/blog', blog.id]" class="read-more">Read More</a>
+      </div>
+    </div>
+  </div>
+</div>

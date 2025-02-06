@@ -1,0 +1,9 @@
+  <h2 class="blog-title">{{ blog.title }}</h2>
+  <p class="blog-content">{{ blog.content | slice:0:100 }}...</p> <!-- Show preview -->
+  <p class="blog-date">Published on: {{ blog.publishedAt | date: 'longDate' }}</p>
+
+  <a [routerLink]="['/blog', blog.id]" class="read-more">Read More</a>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>

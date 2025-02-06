@@ -1,0 +1,19 @@
+<div class="profile-card">
+  <div class="profile-header">
+    <img [src]="person.avatarUrl" alt="Avatar" class="avatar"/>
+    <h2>{{ person.username }}</h2>
+  </div>
+  <div class="blog-list">
+    <p><strong>Age:</strong> {{ person.age }}</p>
+    <p><strong>Email:</strong> {{ person.email }}</p>
+    <h3>Blogs</h3>
+    <ul>
+      <li *ngFor="let blog of person.blogs">
+        <a [routerLink]="['/blog', blog.id]">
+          <strong>{{ blog.title }}</strong> - {{ blog.publishedAt | date:'mediumDate' }}
+        </a>
+      </li>
+    </ul>
+  </div>
+  <button class="subscribe-btn" (click)="subscribe(person.id)" [disabled]="person.isSubscribed">  {{ person.isSubscribed ? 'Subscribed' : 'Subscribe' }}</button>
+</div>

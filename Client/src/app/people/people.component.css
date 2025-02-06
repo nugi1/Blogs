@@ -1,0 +1,52 @@
+/* PeopleComponent CSS */
+.people-page {
+  padding: 80px;
+  text-align: center;
+  margin-top: 80px;
+}
+
+.profile-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Default 4 columns */
+  gap: 20px; /* Gap between the cards */
+  justify-content: center;
+  padding: 20px;
+  margin: auto;
+}
+
+@media (min-width: 1421px) {
+  .profile-cards-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  }
+}
+
+@media (max-width: 1420px) {
+  .profile-cards-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  }
+}
+
+/* 3 columns on medium screens */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .profile-cards-grid {
+    grid-template-columns: repeat(2, 1fr); /* 3 columns */
+  }
+}
+
+/* 2 columns on small screens */
+@media (max-width: 767px) {
+  .profile-cards-grid {
+    grid-template-columns: repeat(1, 1fr); /* 2 columns */
+  }
+}
+
+/* 1 column on very small screens (mobile) */
+@media (max-width: 480px) {
+  .profile-cards-grid {
+    grid-template-columns: 1fr; /* 1 column */
+  }
+}
+
+
+
+

@@ -1,0 +1,7 @@
+<app-nav-bar></app-nav-bar>
+
+<div *ngIf="people" class="people-page">
+  <div class="profile-cards-grid">
+    <app-profile-card *ngFor="let person of people" [person]="person"></app-profile-card>
+  </div>
+</div>
