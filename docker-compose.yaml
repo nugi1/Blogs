@@ -1,0 +1,46 @@
+version: "3.8"
+services:
+  api:
+    build:
+      context: .
+    ports:
+      - "5277:80"  # Map API container port 80 to localhost:5277
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=YourDb;Username=postgres;Password=postgres
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
+  client:
+    build:
+      context: ./Client
+    ports:
+      - "4200:80"
+    depends_on:
+      - api
+    environment:
+      - ENV=production
+    networks:
+      - app-network
+
+  postgres:
+    image: postgres:14
+    environment:
+      - POSTGRES_DB=YourDb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
