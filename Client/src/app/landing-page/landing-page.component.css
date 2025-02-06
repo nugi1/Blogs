@@ -9,9 +9,9 @@
 }
 
 /* Adjusting spacing further for smaller screens */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .photo-section {
-    margin-top: 250px; /* Increased margin on small screens */
+    margin-top: 150px; /* Increased margin on small screens */
     flex-direction: column;
     gap: 20px;
   }
@@ -37,7 +37,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to right, #87CEFA, #B0E0E6);
+  background: linear-gradient(to right, #B8F9B4, #B8D4FF);
 
 }
 
@@ -47,7 +47,7 @@
   gap: 25px; /* Increased space between notes */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .note-container {
     flex-direction: row;
     gap: 15px;

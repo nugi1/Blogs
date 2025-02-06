@@ -11,6 +11,7 @@ public interface IUnitOfWork : IDisposable
     IPostRepository PostRepository { get; set; }
     ITagRepository TagRepository { get; set; }
     IUserJwtRepository UserJwtRepository { get; set; }
+    IUserFollowerRepository UserFollowerRepository { get; set; }
     
     Task<int> SaveAsync();
     

@@ -12,6 +12,7 @@ public class UnitOfWork(
     ICommentRepository commentRepository,
     IPostRepository postRepository,
     ITagRepository tagRepository,
+    IUserFollowerRepository userFollowerRepository,
     IUserJwtRepository userJwtRepository)
     : IUnitOfWork
 {
@@ -23,6 +24,7 @@ public class UnitOfWork(
     public IPostRepository PostRepository { get; set; } = postRepository;
     public ITagRepository TagRepository { get; set; } = tagRepository;
     public IUserJwtRepository UserJwtRepository { get; set; } = userJwtRepository;
+    public IUserFollowerRepository UserFollowerRepository { get; set; } = userFollowerRepository;
 
     public async Task<int> SaveAsync()
     {

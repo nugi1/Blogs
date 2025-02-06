@@ -14,7 +14,18 @@ export class AuthService {
 
   private apiUrl = 'http://localhost:5277/api/users/sign-in';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.checkAuthentication();
+  }
+
+  private checkAuthentication() {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      this.isAuthenticatedSubject.next(true);
+    } else {
+      this.isAuthenticatedSubject.next(false);
+    }
+  }
 
   signIn(username: string, password: string) {
     const signInPayload: SignInUserDto = { username: username, password };

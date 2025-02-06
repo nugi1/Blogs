@@ -5,13 +5,31 @@
 
   <ul class="nav-links-center">
     <li><a routerLink="/home" class="nav-link">Home</a></li>
-    <li><a routerLink="/blogs" class="nav-link">Blogs</a></li>
+    <li *ngIf="isAuthenticated"><a routerLink="/feed" class="nav-link">My Feed</a></li>
+    <li *ngIf="isAuthenticated"><a routerLink="/profiles" class="nav-link">People</a></li>
+    <li><a routerLink="/blogs" class="nav-link">Discover Blogs</a></li>
   </ul>
 
   <ul class="nav-links-right">
+    <li *ngIf="isAuthenticated"><a routerLink="/profile" class="nav-link">Profile</a></li>
+    <li *ngIf="isAuthenticated" (click)="signOut()" class="nav-link">Sign Out</li>
     <li *ngIf="!isAuthenticated"><a routerLink="/sign-in" class="nav-link">Sign In</a></li>
     <li *ngIf="!isAuthenticated"><a routerLink="/sign-up" class="nav-link">Sign Up</a></li>
-    <li *ngIf="isAuthenticated" class="nav-link">My Profile</li>
-    <li *ngIf="isAuthenticated" (click)="signOut()" class="nav-link">Sign Out</li>
   </ul>
+
+  <div class="burger-menu" (click)="toggleMenu()" [class.open]="menuOpen">
+    ☰
+  </div>
+
+  <div class="dropdown-menu" [class.active]="menuOpen">
+    <ul>
+      <li *ngIf="isAuthenticated"><a routerLink="/feed" class="nav-link">My Feed</a></li>
+      <li *ngIf="isAuthenticated"><a routerLink="/profiles" class="nav-link">People</a></li>
+      <li><a routerLink="/blogs" class="nav-link">Discover Blogs</a></li>
+      <li *ngIf="isAuthenticated"><a routerLink="/profile" class="nav-link">Profile</a></li>
+      <li *ngIf="isAuthenticated" (click)="signOut()" class="nav-link">Sign Out</li>
+      <li *ngIf="!isAuthenticated"><a routerLink="/sign-in" class="nav-link">Sign In</a></li>
+      <li *ngIf="!isAuthenticated"><a routerLink="/sign-up" class="nav-link">Sign Up</a></li>
+    </ul>
+  </div>
 </div>

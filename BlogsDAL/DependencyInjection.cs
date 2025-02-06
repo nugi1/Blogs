@@ -9,6 +9,7 @@ public static class DependencyInjection
 {
     public static void AddDataAccess(this IServiceCollection services, string connectionString)
     {
+        services.AddScoped<IUserFollowerRepository, UserFollowerRepository>();
         services.AddScoped<IUserJwtRepository, UserJwtRepository>();
         services.AddScoped<ICommentRepository, CommentRepository>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();

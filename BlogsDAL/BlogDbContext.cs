@@ -6,11 +6,12 @@ namespace BlogsDAL;
 
 public class BlogDbContext(DbContextOptions<BlogDbContext> options) : DbContext(options)
 {
-    public DbSet<Category> Categories { get; set; } = null!;
-    public DbSet<Post> Posts { get; set; } = null!;
-    public DbSet<Comment> Comments { get; set; } = null!;
-    public DbSet<Tag> Tags { get; set; } = null!;
-    public DbSet<UserJwt> UserJwts { get; set; } = null!;
+    public DbSet<Category> Categories { get; set; }
+    public DbSet<Post> Posts { get; set; }
+    public DbSet<Comment> Comments { get; set; }
+    public DbSet<Tag> Tags { get; set; }
+    public DbSet<UserFollower> UserFollowers { get; set; }
+    public DbSet<UserJwt> UserJwts { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -25,6 +26,11 @@ public class BlogDbContext(DbContextOptions<BlogDbContext> options) : DbContext(
             e.Property(c => c.Description)
                 .IsRequired()
                 .HasMaxLength(500);
+        });
+
+        modelBuilder.Entity<UserFollower>(e =>
+        {
+            e.HasKey(uf => new { uf.UserId, uf.FollowerId });
         });
 
         modelBuilder.Entity<UserJwt>(e =>

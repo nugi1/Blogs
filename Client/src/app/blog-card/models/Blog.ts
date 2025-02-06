@@ -6,11 +6,12 @@ export class Blog{
   username: string = '';
   comments: { text: string; author: string }[] = [];
 
-  constructor(title: string, content: string, publishedAt: Date, username: string) {
+  constructor(id: string, title: string, content: string, publishedAt: Date, username: string, comments: {text: string; author: string}[]) {
+    this.id = id;
     this.title = title;
     this.content = content;
     this.publishedAt = publishedAt;
     this.username = username;
-    this.comments = [];
+    this.comments = comments;
   }
 }

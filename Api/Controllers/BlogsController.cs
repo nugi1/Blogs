@@ -8,8 +8,17 @@ namespace Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")] 
-public class BlogsController(IBlogService blogService, IUserService userService, ICommentService commentService) : ControllerBase
+public class BlogsController(IBlogService blogService, IUserService userService, ICommentService commentService, IFollowService followService) : ControllerBase
 {
+    [HttpGet("feed/{userId}")]
+    public async Task<ActionResult<IList<Post>>> GetPosts(Guid userId)
+    {
+        var followerIds = await followService.GetFollowersAsync(userId);
+        var posts = await blogService.GetFollowerPostsByDatetimeAsync(followerIds);
+
+        return Ok(posts);
+    }
+    
     [HttpPost]
     public async Task<ActionResult> CreateBlog([FromBody] BlogDto blogDto)
     {

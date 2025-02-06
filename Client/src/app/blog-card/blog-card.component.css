@@ -4,8 +4,22 @@
   margin: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  background: linear-gradient(to right, #87CEFA, #B0E0E6);
+  background: linear-gradient(to right, #ffffff, #90EE90, #D1C4E9); /* Light white to green and purple gradient */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  transition: transform 0.3s ease, background 0.3s ease;
   position: relative;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px); /* Slight lift effect on hover */
+  background: linear-gradient(to right, #B0E57C, #90EE90); /* Inverted green gradient on hover */
+}
+
+.blog-card h3 {
+  color: #4A148C; /* Dark purple for title */
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .blog-link {

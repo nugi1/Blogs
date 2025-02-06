@@ -27,3 +27,61 @@ button:hover {
 .blogs-page{
   margin-top: 5%;
 }
+
+button {
+  margin-bottom: 15px;
+  padding: 12px 20px;
+  background: linear-gradient(to right, #90EE90, #B0E57C); /* Light green gradient matching the navbar */
+  color: white;
+  border: none;
+  border-radius: 30px; /* Rounded edges for a more modern look */
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background: linear-gradient(to right, #B0E57C, #90EE90); /* Slight color inversion on hover */
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 450px) {
+  /* For smaller screens like mobile, adjust padding and positioning */
+  button {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* For smaller screens like mobile, adjust padding and positioning */
+  .blogs-page {
+    margin-top: 5%; /* Add some space on smaller screens */
+  }
+
+  button {
+    bottom: 10px;  /* Adjust the bottom space on smaller screens */
+    right: 10px;   /* Adjust the right space on smaller screens */
+    font-size: 14px; /* Make the text slightly smaller */
+    margin-top: 2%;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .blogs-page {
+    margin-top: 10%; /* Add some space on smaller screens */
+  }
+
+  button {
+    bottom: 10px;  /* Adjust the bottom space on smaller screens */
+    right: 10px;   /* Adjust the right space on smaller screens */
+    font-size: 14px; /* Make the text slightly smaller */
+  }
+}

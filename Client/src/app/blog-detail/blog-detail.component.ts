@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Blog } from '../blog-card/models/Blog';
 import { Observable } from 'rxjs';
@@ -30,6 +30,7 @@ export class BlogDetailComponent implements OnInit {
   blogId: string | null = ' ';
   comments: {author: string, text: string}[] = [];
   private apiUrl: string = "http://localhost:5277";
+  @Input() blog!: Blog;
 
   constructor(
     private blogService: BlogService,
