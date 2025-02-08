@@ -4,7 +4,7 @@ services:
     build:
       context: .
     ports:
-      - "5277:80"  # Map API container port 80 to localhost:5277
+      - "5277:8080"  # Map API container port 80 to localhost:5277
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
       - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=YourDb;Username=postgres;Password=postgres
@@ -13,15 +13,19 @@ services:
     networks:
       - app-network
 
+
   client:
     build:
       context: ./Client
+      dockerfile: Dockerfile
     ports:
-      - "4200:80"
-    depends_on:
-      - api
+      - "4200:4200"
+    volumes:
+      - ./Client:/app
+      - /app/node_modules
     environment:
-      - ENV=production
+      - CHOKIDAR_USEPOLLING=true
+    command: ["npm", "run", "start", "--", "--host", "0.0.0.0"]
     networks:
       - app-network
 

@@ -2,6 +2,7 @@ using System.Text;
 using BlogsDAL;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Services;
@@ -65,6 +66,20 @@ if (app.Environment.IsDevelopment())
     });
 }
 app.UseCors("AllowAngularApp");
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    // Apply migrations for BlogDbContext
+    var blogDbContext = services.GetRequiredService<BlogDbContext>();
+    blogDbContext.Database.Migrate();
+
+    // Apply migrations for MainDbContext (if applicable)
+    var mainDbContext = services.GetRequiredService<UserDbContext>();
+    mainDbContext.Database.Migrate();
+}
+
 
 app.MapControllers();
 app.Run();

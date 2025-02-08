@@ -1,29 +1,19 @@
-# Use Node.js image to build the Angular app
+# Use Node.js image
 FROM node:18 AS build
 
-# Set the working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy the package.json and package-lock.json files
+# Copy package files & install dependencies
 COPY package*.json ./
-
-# Install the dependencies
 RUN npm install
 
-# Copy all the other files
+# Copy the app files
 COPY . .
 
-# Build the Angular application
-RUN npm run build --prod
+# Expose Angular default port
+EXPOSE 4200
 
-# Use Nginx to serve the built Angular app
-FROM nginx:alpine
+# Run Angular dev server
+CMD ["npm", "run", "start", "--", "--host", "0.0.0.0"]
 
-# Copy the build output to the Nginx directory
-COPY --from=build /app/dist/client /usr/share/nginx/html
-
-# Expose port 80
-EXPOSE 80
-
-# Start Nginx to serve the app
-CMD ["nginx", "-g", "daemon off;"]
