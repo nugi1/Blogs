@@ -16,6 +16,7 @@ export const routes: Routes = [
   {path:"profiles", component:PeopleComponent},
   {path:"feed", component:FeedComponent},
   {path:"", component: LandingPageComponent},
+  {path:"home", component: LandingPageComponent},
   {path:'sign-in', component: SignInComponent},
   {path:'blogs', component: BlogsPageComponent},
   {path: 'sign-up', component: RegisterFormComponent},
