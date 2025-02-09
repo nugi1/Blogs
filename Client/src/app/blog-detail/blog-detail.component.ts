@@ -29,7 +29,7 @@ export class BlogDetailComponent implements OnInit {
   protected newComment: any;
   blogId: string | null = ' ';
   comments: {author: string, text: string}[] = [];
-  private apiUrl: string = "http://localhost:5277";
+  private apiUrl: string = "http://20.82.111.66:5277";
   @Input() blog!: Blog;
 
   constructor(

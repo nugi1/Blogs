@@ -25,7 +25,7 @@ import {RouterLink} from "@angular/router";
 export class FeedBlogComponent {
   @Input() blog!: Blog;
   protected newComment: any;
-  private apiUrl: string = "http://localhost:5277";
+  private apiUrl: string = "http://20.82.111.66:5277";
 
   constructor(private http: HttpClient) {
   }

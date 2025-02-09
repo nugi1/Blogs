@@ -8,7 +8,7 @@ import {tap} from "rxjs";
   providedIn: 'root'
 })
 export class FeedService {
-  private apiUrl = 'http://localhost:5277/feed';
+  private apiUrl = 'http://20.82.111.66:5277/feed';
 
   constructor(private http: HttpClient) { }
 

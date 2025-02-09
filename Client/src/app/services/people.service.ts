@@ -6,7 +6,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
   providedIn: 'root'
 })
 export class PeopleService {
-  privateUrl : string = "http://localhost:5277/"
+  privateUrl : string = "http://20.82.111.66:5277/"
   constructor(private http: HttpClient) {
   }
 

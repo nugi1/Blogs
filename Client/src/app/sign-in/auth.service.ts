@@ -12,7 +12,7 @@ export class AuthService {
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
-  private apiUrl = 'http://localhost:5277/api/users/sign-in';
+  private apiUrl = 'http://20.82.111.66:5277/api/users/sign-in';
 
   constructor(private http: HttpClient) {
     this.checkAuthentication();

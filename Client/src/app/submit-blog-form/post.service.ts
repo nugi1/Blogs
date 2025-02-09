@@ -8,7 +8,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 export class PostService {
 
-  private apiUrl = 'http://localhost:5277/api/blogs';
+  private apiUrl = 'http://20.82.111.66:5277/api/blogs';
 
   constructor(private http: HttpClient) {}
 
