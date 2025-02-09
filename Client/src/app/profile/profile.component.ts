@@ -59,7 +59,7 @@ export class ProfileComponent implements OnInit{
   }
 
   getUserProfile(userId: string) {
-    let url = "http://localhost:5277/profile";
+    let url = "http://20.82.111.66:5277/profile";
     this.http.get<Profile>(`${url}/${userId}`).subscribe(profile => {
       this.userProfile = profile;
       console.log(this.userProfile);
@@ -70,7 +70,7 @@ export class ProfileComponent implements OnInit{
   getCurrentUserProfile() {
     const token = localStorage.getItem('authToken'); // Get JWT from localStorage
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    let url = "http://localhost:5277/profile"
+    let url = "http://20.82.111.66:5277/profile"
     this.http.get<Profile>(url, {headers}).subscribe(profile => {
       this.userProfile = profile;
       this.loadFriendsAndBlogs(profile.id);
@@ -78,7 +78,7 @@ export class ProfileComponent implements OnInit{
   }
 
   loadFriendsAndBlogs(userId: string) {
-    let url = "http://localhost:5277/profile";
+    let url = "http://20.82.111.66:5277/profile";
     this.http.get<Friend[]>(`${url}/friends/${userId}`).subscribe(friends => {
       this.friends = friends;
     });
