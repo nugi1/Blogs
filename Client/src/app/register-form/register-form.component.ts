@@ -45,7 +45,7 @@ export class RegisterFormComponent {
       this.registerService.registerUser(userData).subscribe(
         (response) => {
           console.log('Registration Successful:', response);
-          this.router.navigate(['/home']).then(r => r.valueOf());
+          this.router.navigate(['']).then(r => r.valueOf());
         },
         (error) => {
           console.error('Registration Error:', error);
